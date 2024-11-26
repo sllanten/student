@@ -1,0 +1,294 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Student</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    <!-- CND BOOTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+
+    <style>
+        a{
+            text-decoration: none;
+        }
+        .linkJv{
+            color: white;
+        }
+        .griJv{
+            border: 5px solid darkblue;
+            height:100;
+        }
+        .centerJv{
+            text-center;
+        }
+    </style>    
+    
+    <style>
+        /* Estilos globales */
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f0e7d1;
+            display: flex;
+        }
+        /* Estilo de la barra lateral */
+        
+        .sidebar {
+            background-color: #4a7bd0;
+            color: #fff;
+            width: 250px;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar h2 {
+            font-size: 18px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar ul li {
+            padding: 10px 0;
+            cursor: pointer;
+        }
+        
+        .sidebar ul li:hover {
+            background-color: #3a6ab7;
+            border-radius: 5px;
+        }
+        /* Estilo del contenido principal */
+        
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            width: calc(100% - 250px);
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f4b41a;
+            padding: 15px 20px;
+            border-bottom: 3px solid #e1a914;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .user-info {
+            font-weight: bold;
+            color: #333;
+        }
+        /* Estilo del informe */
+        
+        .report {
+            background-color: #e9eef7;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        
+        .report-details {
+            margin-bottom: 10px;
+        }
+        
+        .report-details p {
+            margin: 5px 0;
+        }
+        
+        .report-controls {
+            text-align: right;
+        }
+        
+        .report-controls input {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+        
+        .report-controls button {
+            padding: 10px 15px;
+            background-color: #f4b41a;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .report-controls button:hover {
+            background-color: #e1a914;
+        }
+        /* Estilo de la tabla */
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        thead {
+            background-color: #f4b41a;
+        }
+        
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        /* Estilo del pie de página */
+        
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #4a7bd0;
+            color: #fff;
+            font-size: 12px;
+            position: relative;
+            border-radius: 8px 8px 0 0;
+            margin-top: 30px;
+        }
+        
+        .logo {
+            display: block;
+            margin: 0 auto;
+            width: 60px;
+        }
+    </style>    
+
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2>ADMINISTRADOR CAMPUS</h2>
+        <ul>
+            <li>Inicio</li>
+            <li>Usuarios</li>
+            <li>Nueva Materia</li>
+            <li>Matricular Materia</li>
+            <li>Asignar Materia</li>
+            <li>Generar Informe</li>
+            <li>Alumnos por Materia</li>
+            <li>Alumno</li>
+            <li>Calificaciones</li>
+            <li>Grupo Diurno</li>
+            <li>Grupo Nocturno</li>
+            <li>Misión y Visión</li>
+            <li>Acerca de</li>
+            <li>Cerrar Sesión</li>
+        </ul>
+    </div>
+    <div class="content">
+        <header>
+            <h1>Informe de Alumnos por Materia</h1>
+            <div class="user-info">
+                
+                <p>{{ login.nombre }}</p>
+            </div>
+        </header>
+        <div class="report">
+                <div class="report-details">
+                    <p>Docente: {{ login.nombre }}</p>
+                    <p>Materia: {{ login.materia }}</p>
+                    <p>Año: 2024</p>
+                </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Código</th>
+                    <th>Nombres y Apellidos</th>
+                    <th>Corte 1</th>
+                    <th>Corte 2</th>
+                    <th>Corte 3</th>
+                    <th>Nota Final</th>
+                    <th>Habilitación</th>
+                    <th>Faltas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ dt1.id }}</td>
+                    <td>{{ dt1.codigo }}</td>
+                    <td>{{ dt1.nombre }}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>{{ dt2.id }}</td>
+                    <td>{{ dt2.codigo }}</td>
+                    <td>{{ dt2.nombre }}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>{{ dt3.id }}</td>
+                    <td>{{ dt3.codigo }}</td>
+                    <td>{{ dt3.nombre }}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>{{ dt4.id }}</td>
+                    <td>{{ dt4.codigo }}</td>
+                    <td>{{ dt4.nombre }}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <footer>
+            <p>Institución Universitaria Colegio Mayor del Cauca - Versión 3.4.0 - © 2024</p>
+        </footer>
+    </div>
+</body>
+
+
+</html>
