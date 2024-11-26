@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Student</title>
+    <link rel="icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -21,6 +22,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
     </script>
+
+    <!-- React and ReactDOM -->
+    <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 
     <style>
         a{
@@ -223,7 +228,7 @@
                     <p>Año: 2024</p>
                 </div>
         </div>
-        <table>
+        <table border="1" id="tabla-datos">
             <thead>
                 <tr>
                     <th>#</th>
@@ -238,57 +243,82 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>{{ dt1.id }}</td>
-                    <td>{{ dt1.codigo }}</td>
-                    <td>{{ dt1.nombre }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>{{ dt2.id }}</td>
-                    <td>{{ dt2.codigo }}</td>
-                    <td>{{ dt2.nombre }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>{{ dt3.id }}</td>
-                    <td>{{ dt3.codigo }}</td>
-                    <td>{{ dt3.nombre }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>{{ dt4.id }}</td>
-                    <td>{{ dt4.codigo }}</td>
-                    <td>{{ dt4.nombre }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                    <!-- Aquí se añadirán las filas dinámicamente -->
             </tbody>
         </table>
         <footer>
             <p>Institución Universitaria Colegio Mayor del Cauca - Versión 3.4.0 - © 2024</p>
         </footer>
     </div>
-</body>
+    <script>
+         // URL de la API
+        const apiUrl = 'http://127.0.0.1:8000/api/datos/';
 
+        // Referencia al cuerpo de la tabla
+        const tablaCuerpo = document.querySelector('#tabla-datos tbody');
+
+        // Función para obtener datos de la API y llenar la tabla
+        async function obtenerDatos() {
+            try {
+                const respuesta = await fetch(apiUrl); // Hacer la petición a la API
+                if (!respuesta.ok) {
+                    throw new Error('Error al obtener datos de la API');
+                }
+                const datos = await respuesta.json(); // Convertir a JSON
+
+                // Iterar sobre los datos y crear filas dinámicamente
+                datos.forEach((usuario) => {
+                    const fila = document.createElement('tr'); // Crear una fila
+
+                    // Crear y añadir celdas con los datos
+                    const celdaId = document.createElement('td');
+                    celdaId.textContent = usuario.id;
+                    fila.appendChild(celdaId);
+
+                    const celdaNombre = document.createElement('td');
+                    celdaNombre.textContent = usuario.nombre;
+                    fila.appendChild(celdaNombre);
+
+                    const celdaEmail = document.createElement('td');
+                    celdaEmail.textContent = usuario.codigo;
+                    fila.appendChild(celdaEmail);
+
+                    //  NOTAS
+                    const celdanT1 = document.createElement('td');
+                    celdanT1.textContent = 0;
+                    fila.appendChild(celdanT1);
+
+                    const celdanT2 = document.createElement('td');
+                    celdanT2.textContent = 0;
+                    fila.appendChild(celdanT2);
+
+                    const celdanT3 = document.createElement('td');
+                    celdanT3.textContent = 0;
+                    fila.appendChild(celdanT3);
+
+                    const celdanT4 = document.createElement('td');
+                    celdanT4.textContent = 0;
+                    fila.appendChild(celdanT4);
+
+                    const celdanT5 = document.createElement('td');
+                    celdanT5.textContent = 0;
+                    fila.appendChild(celdanT5);
+
+                    const celdanT6 = document.createElement('td');
+                    celdanT6.textContent = 0;
+                    fila.appendChild(celdanT6);
+
+                    // Añadir la fila al cuerpo de la tabla
+                    tablaCuerpo.appendChild(fila);
+                });
+            } catch (error) {
+                console.error('Hubo un error:', error);
+            }
+        }
+
+        // Llamar a la función para obtener los datos al cargar la página
+        obtenerDatos();
+    </script>
+</body>
 
 </html>

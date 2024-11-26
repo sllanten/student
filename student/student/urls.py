@@ -24,4 +24,5 @@ from . import views  # Importamos la vista
 
 urlpatterns = [
       path('', views.index, name='index'),   
+      path('api/datos/', views.apiShow, name='apiIndex'),
 ]
