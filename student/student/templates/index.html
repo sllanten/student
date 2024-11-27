@@ -1,3 +1,4 @@
+{% load static %}
 <html>
 
 <head>
@@ -190,11 +191,13 @@
             width: 60px;
         }
     </style>    
+    
+    <script src="{% static '' %}"></script>
 
 </head>
 
 <body>
-    <div class="sidebar">
+   <div class="sidebar">
         <h2>ADMINISTRADOR CAMPUS</h2>
         <ul>
             <li>Inicio</li>
@@ -250,75 +253,6 @@
             <p>Institución Universitaria Colegio Mayor del Cauca - Versión 3.4.0 - © 2024</p>
         </footer>
     </div>
-    <script>
-         // URL de la API
-        const apiUrl = 'http://127.0.0.1:8000/api/datos/';
-
-        // Referencia al cuerpo de la tabla
-        const tablaCuerpo = document.querySelector('#tabla-datos tbody');
-
-        // Función para obtener datos de la API y llenar la tabla
-        async function obtenerDatos() {
-            try {
-                const respuesta = await fetch(apiUrl); // Hacer la petición a la API
-                if (!respuesta.ok) {
-                    throw new Error('Error al obtener datos de la API');
-                }
-                const datos = await respuesta.json(); // Convertir a JSON
-
-                // Iterar sobre los datos y crear filas dinámicamente
-                datos.forEach((usuario) => {
-                    const fila = document.createElement('tr'); // Crear una fila
-
-                    // Crear y añadir celdas con los datos
-                    const celdaId = document.createElement('td');
-                    celdaId.textContent = usuario.id;
-                    fila.appendChild(celdaId);
-
-                    const celdaNombre = document.createElement('td');
-                    celdaNombre.textContent = usuario.nombre;
-                    fila.appendChild(celdaNombre);
-
-                    const celdaEmail = document.createElement('td');
-                    celdaEmail.textContent = usuario.codigo;
-                    fila.appendChild(celdaEmail);
-
-                    //  NOTAS
-                    const celdanT1 = document.createElement('td');
-                    celdanT1.textContent = 0;
-                    fila.appendChild(celdanT1);
-
-                    const celdanT2 = document.createElement('td');
-                    celdanT2.textContent = 0;
-                    fila.appendChild(celdanT2);
-
-                    const celdanT3 = document.createElement('td');
-                    celdanT3.textContent = 0;
-                    fila.appendChild(celdanT3);
-
-                    const celdanT4 = document.createElement('td');
-                    celdanT4.textContent = 0;
-                    fila.appendChild(celdanT4);
-
-                    const celdanT5 = document.createElement('td');
-                    celdanT5.textContent = 0;
-                    fila.appendChild(celdanT5);
-
-                    const celdanT6 = document.createElement('td');
-                    celdanT6.textContent = 0;
-                    fila.appendChild(celdanT6);
-
-                    // Añadir la fila al cuerpo de la tabla
-                    tablaCuerpo.appendChild(fila);
-                });
-            } catch (error) {
-                console.error('Hubo un error:', error);
-            }
-        }
-
-        // Llamar a la función para obtener los datos al cargar la página
-        obtenerDatos();
-    </script>
 </body>
 
 </html>
