@@ -1,0 +1,6 @@
+comandos para programar
+ terminal ->pront command
+    .\env\Scripts\activate -> en la raiz del proyecto => activa el modo (env) de la terminal
+    python manage.py migrate -> en el directorio del proyecto => realiza las migraciones (solo cuando halla modelos creados)
+    python manage.py runserver -> en el directorio del proyecto => ejecuta el servidor de Django
+    npm run dev -> en el directorio del proyecto => ejecuta el compilado del componente de react.js
